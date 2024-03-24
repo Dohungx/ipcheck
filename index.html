@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cảnh Báo Từ Web</title>
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: #f0f0f0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          text-align: center;
+      }
+
+      .modal {
+          background-color: #fff;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+          max-width: 400px;
+          width: 80%;
+          padding: 20px;
+          text-align: center;
+          animation: fadeIn 0.5s ease-out;
+      }
+
+      .modal-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+      }
+
+      .modal h1 {
+          color: red;
+      }
+
+      .modal p {
+          margin-bottom: 20px;
+      }
+
+      .modal button {
+          background-color: #f44336;
+          color: white;
+          padding: 10px 20px;
+          text-decoration: none;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          margin: 0 10px;
+          transition: background-color 0.3s ease;
+      }
+
+      .modal button:hover {
+          background-color: #d32f2f;
+      }
+
+      @keyframes fadeIn {
+          from {
+              opacity: 0;
+          }
+          to {
+              opacity: 1;
+          }
+      }
+    </style>
+</head>
+<body>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <h1>CẢNH BÁO!</h1>
+            <p>Khi bạn truy cập trang web này, thông tin của bạn sẽ được thu thập.</p>
+            <button id="declineBtn">Từ Chối</button>
+            <button id="continueBtn">Tiếp tục</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var modal = document.getElementById('myModal');
+            var declineBtn = document.getElementById('declineBtn');
+            var continueBtn = document.getElementById('continueBtn');
+
+            continueBtn.addEventListener('click', function() {
+                // Lưu trạng thái của modal vào localStorage
+                localStorage.setItem('modalClosed', 'true');
+                modal.classList.add('hidden');
+                window.location.href = 'main.html'; // Chuyển hướng đến trang tiếp theo
+            });
+
+            declineBtn.addEventListener('click', function() {
+                // Chuyển hướng đến trang 'dong.html' khi nhấn nút 'Từ Chối'
+                window.location.href = 'dong.html';
+            });
+
+            // Kiểm tra nếu modal đã được đóng trước đó
+            var modalClosed = localStorage.getItem('modalClosed');
+            if (modalClosed) {
+                modal.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
