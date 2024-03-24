@@ -1,0 +1,146 @@
+/* Thiết lập font chữ chính */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #FFA500;
+}
+
+/* Phần header */
+details {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #87CEED;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+summary {
+    cursor: pointer;
+    outline: none;
+    font-weight: bold;
+    color: #333333; /* Màu đen */
+}
+
+a {
+    color: #ff6600; /* Màu cam đậm */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Phần container */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #ffffff; /* Màu trắng */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333333; /* Màu đen */
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+p {
+    color: #555555; /* Màu xám đậm */
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+
+span {
+    font-weight: bold;
+}
+
+/* Phần footer */
+footer {
+    background-color: #333333; /* Màu đen */
+    color: #ffffff; /* Màu trắng */
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+
+.end {
+    color: #fff;
+}
+
+/* menu */
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    width: 30px;
+    height: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.bar {
+    width: 100%;
+    height: 2px;
+    background-color: #333333; /* Màu đen */
+    transition: transform 0.3s ease;
+}
+
+.menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+.menu {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 200px;
+    background-color: #ffffff; /* Màu trắng */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: none;
+}
+
+.menu.active {
+    display: block;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu ul li {
+    margin-bottom: 10px;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: #333333; /* Màu đen */
+    font-weight: bold;
+}
+
+.menu ul li a:hover {
+    color: #ff6600; /* Màu cam đậm */
+}
+
+.logovit {
+    text-align: center;
+}
