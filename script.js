@@ -1,42 +1,18 @@
-// Hàm khởi tạo
-function initialize() {
-    displayIPInfo();
-    displayDeviceInfo();
-    checkVPNStatus();
-    detectBrowser();
-    displayNetworkInfo();
-    displayLanguageInfo();
-    displayOSInfo();
-    displayScreenResolution();
-    displayCPUInfo();
-    displayRAMInfo();
-    displayStorageInfo();
-    displayNetworkSpeed();
-    checkAdBlock();
-    checkBattery();
-    checkPhoneNumber();
-}
-
-// Gọi hàm khởi tạo khi trang được tải
-window.onload = initialize;
-
 // Hàm để lấy thông tin IP
 async function getIPInfo() {
     try {
         const response = await fetch('https://ipinfo.io/json');
-        const data = await response.json();
-        return data;
+        return await response.json();
     } catch (error) {
         console.error('Lỗi khi tải thông tin IP:', error);
     }
 }
 
-// Hàm để hiển thị thông tin ISP
+// Hàm để hiển thị thông tin IP
 async function displayIPInfo() {
     const ipInfo = await getIPInfo();
     document.getElementById('user-ip').innerText = ipInfo.ip;
-    document.getElementById('user-location').innerText = ipInfo.city + ', ' + ipInfo.region + ', ' + ipInfo.country;
-    document.getElementById('isp-info').innerText = ipInfo.org || "Không rõ";
+    document.getElementById('user-location').innerText = `${ipInfo.city}, ${ipInfo.region}, ${ipInfo.country}`;
 }
 
 // Hàm để kiểm tra và hiển thị tên thiết bị
@@ -119,6 +95,25 @@ function updateTime() {
 setInterval(updateTime, 1000);
 updateTime();
 
+// Gọi các hàm để hiển thị thông tin khi trang được tải
+async function displayAllInfo() {
+    displayDeviceInfo();
+    displayIPInfo();
+    checkVPNStatus();
+    detectBrowser();
+    displayNetworkInfo();
+    displayLanguageInfo();
+    displayOSInfo();
+    displayScreenResolution();
+    displayCPUInfo();
+    await displayRAMInfo();
+    await displayStorageInfo();
+    displayNetworkSpeed();
+}
+
+// Gọi hàm để hiển thị tất cả thông tin khi trang được tải
+displayAllInfo();
+
 // Hàm để kiểm tra và hiển thị ngôn ngữ
 function displayLanguageInfo() {
     const userLanguage = navigator.language;
@@ -172,6 +167,28 @@ async function displayStorageInfo() {
     }
 }
 
+// Hàm để lấy thông tin IP
+async function getIPInfo() {
+    try {
+        const response = await fetch('https://ipinfo.io/json');
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Lỗi khi tải thông tin IP:', error);
+    }
+}
+
+// Hàm để hiển thị thông tin ISP
+async function displayIPInfo() {
+    const ipInfo = await getIPInfo();
+    document.getElementById('user-ip').innerText = ipInfo.ip;
+    document.getElementById('user-location').innerText = ipInfo.city + ', ' + ipInfo.region + ', ' + ipInfo.country;
+    document.getElementById('isp-info').innerText = ipInfo.org || "Không rõ";
+}
+
+// Gọi hàm hiển thị thông tin IP khi trang được tải
+window.onload = displayIPInfo;
+
 // Hàm kiểm tra và cập nhật trạng thái AdBlock
 function checkAdBlock() {
     // Tạo một phần tử div có chứa quảng cáo kiểm tra
@@ -202,8 +219,10 @@ function checkAdBlock() {
     }, 100);
 }
 
-// Hàm kiểm tra trạng thái pin
-function checkBattery() {
+// Gọi hàm kiểm tra AdBlock khi trang được tải
+checkAdBlock();
+
+window.onload = function() {
     navigator.getBattery().then(function(battery) {
         function updateBatteryStatus() {
             document.getElementById('battery-info').textContent = battery.level * 100 + '%';
@@ -212,7 +231,7 @@ function checkBattery() {
         battery.addEventListener('levelchange', updateBatteryStatus);
         updateBatteryStatus();
     });
-}
+};
 
 // Hàm để kiểm tra số điện thoại
 function checkPhoneNumber() {
