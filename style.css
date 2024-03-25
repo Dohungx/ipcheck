@@ -60,20 +60,20 @@ span {
 }
 
 /* Phần footer */
- footer {
-            background-color: #333333;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-            left: 0;
-        }
+footer {
+    background-color: #333333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
 
-        footer p {
-            margin: 0;
-        }
+footer p {
+    margin: 0;
+}
 
 .end {
     color: #fff;
@@ -147,4 +147,46 @@ span {
 
 .logovit {
     text-align: center;
+}
+
+/* CSS cho nút Tìm kiếm IP */
+#search-button {
+    padding: 10px 20px;
+    background-color: #ff6600; /* Màu nền của nút */
+    color: #fff; /* Màu chữ trên nút */
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Hiệu ứng chuyển đổi màu nền khi hover */
+}
+
+/* CSS cho input */
+#search-ip {
+    padding: 10px;
+    border: 1px solid #ccc; /* Viền đậm màu xám */
+    border-radius: 5px; /* Bo góc */
+    font-size: 16px;
+    width: 200px; /* Độ rộng */
+}
+
+/* CSS cho button */
+#search-button {
+    padding: 10px 20px;
+    background-color: #FFAA500;
+    color: #fff; /* Màu chữ trắng */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Hover effect */
+#search-button:hover {
+    background-color: #FFAA500;
+}
+
+/* Khu vực hiển thị kết quả */
+#ip-info {
+    margin-top: 10px;
 }
