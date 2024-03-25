@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm kiếm IP</title>
+    <link rel="website icon" type="png" href="logovit.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <img src="logovit.png" alt="Logo zui ze" width="70">
+    <!-- Thanh tìm kiếm IP -->
+    <input type="text" id="search-ip" placeholder="Nhập địa chỉ IP">
+    <button onclick="searchIP()" id="search-button">Tìm kiếm</button>
+
+    <!-- Khu vực hiển thị kết quả -->
+    <div id="ip-info"></div>
+
+    <script>
+        function searchIP() {
+            fetch("https://ipinfo.io/json")
+                .then(response => response.json())
+                .then(data => {
+                    var ipInfo = document.getElementById("ip-info");
+                    ipInfo.innerHTML = "IP: " + data.ip + "<br>" +
+                                        "Quốc gia: " + data.country + "<br>" +
+                                        "Khu vực: " + data.region + "<br>" +
+                                        "Thành phố: " + data.city + "<br>" +
+                                        "Mã bưu chính: " + data.postal + "<br>" +
+                                        "Tọa độ: " + data.loc;
+                })
+                .catch(error => {
+                    console.error("Đã xảy ra lỗi: " + error);
+                });
+        }
+    </script>
+</body>
+</html>
