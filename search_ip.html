@@ -4,36 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tìm kiếm IP</title>
-    <link rel="website icon" type="png" href="logovit.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <img src="logovit.png" alt="Logo zui ze" width="70">
-    <!-- Thanh tìm kiếm IP -->
-    <input type="text" id="search-ip" placeholder="Nhập địa chỉ IP">
-    <button onclick="searchIP()" id="search-button">Tìm kiếm</button>
+    <header>
+        <img src="logovit.png" alt="Logo zui ze" width="70">
+        <h1>Tìm kiếm thông tin địa chỉ IP</h1>
+    </header>
 
-    <!-- Khu vực hiển thị kết quả -->
+    <div class="search-container">
+        <input type="text" id="search-ip" placeholder="Nhập địa chỉ IP" autocomplete="off">
+        <button onclick="searchIP()" id="search-button">Tìm kiếm</button>
+    </div>
+
     <div id="ip-info"></div>
 
     <script>
         function searchIP() {
-    const ipAddress = document.getElementById('search-ip').value;
-    fetch(`https://ipinfo.io/${ipAddress}/json`)
-        .then(response => response.json())
-        .then(data => {
-            var ipInfo = document.getElementById("ip-info");
-            ipInfo.innerHTML = "IP: " + data.ip + "<br>" +
-                                "Quốc gia: " + data.country + "<br>" +
-                                "Khu vực: " + data.region + "<br>" +
-                                "Thành phố: " + data.city + "<br>" +
-                                "Mã bưu chính: " + data.postal + "<br>" +
-                                "Tọa độ: " + data.loc;
-        })
-        .catch(error => {
-            console.error("Đã xảy ra lỗi: " + error);
-        });
-}
+            const ipAddress = document.getElementById('search-ip').value;
+            if (!ipAddress.trim()) {
+                alert('Vui lòng nhập địa chỉ IP.');
+                return;
+            }
+            
+            fetch(`https://ipinfo.io/${ipAddress}/json`)
+                .then(response => response.json())
+                .then(data => {
+                    var ipInfo = document.getElementById("ip-info");
+                    ipInfo.innerHTML = "IP: " + data.ip + "<br>" +
+                                        "Quốc gia: " + data.country + "<br>" +
+                                        "Khu vực: " + data.region + "<br>" +
+                                        "Thành phố: " + data.city + "<br>" +
+                                        "Mã bưu chính: " + data.postal + "<br>" +
+                                        "Tọa độ: " + data.loc;
+                })
+                .catch(error => {
+                    console.error("Đã xảy ra lỗi: " + error);
+                    alert('Không thể tìm thấy thông tin cho địa chỉ IP này.');
+                });
+        }
     </script>
 </body>
 </html>
