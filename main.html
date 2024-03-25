@@ -28,6 +28,14 @@
   </nav>
 
     <div class="container">
+      <!-- Thêm trường nhập IP -->
+<input type="text" id="search-ip" placeholder="Nhập địa chỉ IP cần tìm kiếm">
+
+<!-- Nút để kích hoạt chức năng tìm kiếm -->
+<button onclick="searchIP()">Tìm kiếm</button>
+
+<!-- Khu vực hiển thị kết quả -->
+<div id="ip-info"></div>
         <h1>Thông Tin Người Dùng</h1>
         <p>Địa chỉ IP của bạn: <span id="user-ip">Đang tải...</span></p>
         <p>Vị trí: <span id="user-location">Đang tải...</span></p>
