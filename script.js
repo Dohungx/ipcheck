@@ -13,6 +13,9 @@ async function searchIP() {
     }
 }
 
+// Gọi hàm tìm kiếm IP khi nhấp vào nút "Tìm kiếm"
+document.querySelector('button').addEventListener('click', searchIP);
+
 // Hàm hiển thị thông tin liên quan đến địa chỉ IP
 function displayIPInfo(ipInfo) {
     const ipInfoHTML = `
