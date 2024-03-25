@@ -28,11 +28,14 @@
 
     <div class="container">
       <!-- Thêm trường nhập IP -->
+<!-- Thanh tìm kiếm IP -->
 <input type="text" id="search-ip" placeholder="Nhập địa chỉ IP">
-<button onclick="searchIP()">Tìm kiếm</button>
+<button onclick="searchIP()" id="search-button">Tìm kiếm</button>
 
 <!-- Khu vực hiển thị kết quả -->
 <div id="ip-info"></div>
+
+        <!-- Chính -->
         <h1>Thông Tin Người Dùng</h1>
         <p>Địa chỉ IP của bạn: <span id="user-ip">Đang tải...</span></p>
         <p>Vị trí: <span id="user-location">Đang tải...</span></p>
