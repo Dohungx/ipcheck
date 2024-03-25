@@ -232,3 +232,15 @@ window.onload = function() {
         updateBatteryStatus();
     });
 };
+
+// Hàm để kiểm tra số điện thoại
+function checkPhoneNumber() {
+    const userAgent = navigator.userAgent;
+    const phoneNumberRegex = /\b\d{3}[-.]?\d{3}[-.]?\d{4}\b|\b\d{3}[.]\d{3}[.]\d{4}\b/; // Biểu thức chính quy để khớp với số điện thoại theo định dạng XXX-XXX-XXXX hoặc XXX.XXX.XXXX
+
+    const phoneNumberFound = phoneNumberRegex.test(userAgent);
+    document.getElementById('phone-number-check').innerText = phoneNumberFound ? 'Có' : 'Không';
+}
+
+//gọi hàm kiểm tra sdt
+checkPhoneNumber();
