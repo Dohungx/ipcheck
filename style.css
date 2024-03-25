@@ -60,16 +60,20 @@ span {
 }
 
 /* Phần footer */
-footer {
-    background-color: #333333; /* Màu đen */
-    color: #ffffff; /* Màu trắng */
-    padding: 10px 0;
-    text-align: center;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    left: 0;
-}
+ footer {
+            background-color: #333333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
 
 .end {
     color: #fff;
