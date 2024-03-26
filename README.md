@@ -1,4 +1,4 @@
 Demo IP INFO + SEARCH IP
-Lấy code xin ghi nguồn : <a href="https://github.com/Dohungx>Dohungx</a>
-URL:
+Lấy code xin ghi nguồn :Dohungx
+URL WEB:
 https://dohungx.github.io/ipcheck
