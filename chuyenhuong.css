@@ -1,0 +1,30 @@
+/* CSS cho thanh chuyển hướng */
+        .navbar {
+            background-color: #333; /* Màu nền của thanh chuyển hướng */
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .navbar li {
+            display: inline;
+        }
+
+        .navbar li a {
+            display: inline-block;
+            padding: 20px;
+            text-decoration: none;
+            color: white; /* Màu chữ của các liên kết */
+        }
+
+        .navbar li a:hover {
+            background-color: #555; /* Màu nền khi di chuột qua các liên kết */
+        }
