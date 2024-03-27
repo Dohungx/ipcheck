@@ -60,8 +60,15 @@
                     alert('Không thể tìm thấy thông tin cho địa chỉ IP này.');
                 });
         }
+
+        function toggleMenu() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.menu');
+    menuToggle.classList.toggle('active');
+    menu.classList.toggle('active');
+}
+        
     </script>
-    <script src="menu.js"></script>
     <footer>
         <p class="end">© 2024 - Trang Web Được Làm Bởi Đỗ Hùng</p>
     </footer>
