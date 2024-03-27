@@ -1,21 +1,29 @@
-.navbar {
-  display: flex;
-  background-color: #FAA500; /* Màu nền của thanh chuyển hướng */
-  padding: 10px;
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #ffaa500; /* Màu nền */
 }
 
-.navbar a {
+.navbar li {
+  float: left;
+}
+
+.navbar li a {
+  display: block;
   color: white; /* Màu chữ */
-  text-decoration: none; /* Loại bỏ gạch chân dưới chữ */
-  margin: 0 10px; /* Khoảng cách giữa các mục chuyển hướng */
-  transition: color 0.3s, background-color 0.3s; /* Hiệu ứng mượt mà khi thay đổi màu chữ và nền */
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  transition: background-color 0.3s ease; /* Thêm hiệu ứng mượt khi chuyển đổi màu nền */
 }
 
-.navbar a:hover {
-  color: yellow; /* Màu chữ khi di chuột qua */
-  background-color: #faa700; /* Màu nền khi di chuột qua */
+.navbar li a:hover {
+  background-color: #f9f9f9;
+  color: #333; /* Màu chữ khi di chuột qua */
 }
 
-.navbar a:focus {
-  outline: none; /* Loại bỏ đường viền khi click */
+.navbar li a:active {
+  background-color: #ddd; /* Màu nền khi đang được click */
 }
