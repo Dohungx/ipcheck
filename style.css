@@ -179,3 +179,34 @@ footer p {
 #ip-info {
     margin-top: 10px;
 }
+
+.info {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.info h2 {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.info ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.info ul li {
+    margin-bottom: 10px;
+}
+
+.info ul li a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.info ul li a:hover {
+    text-decoration: underline;
+}
