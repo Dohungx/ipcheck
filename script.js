@@ -248,3 +248,8 @@ function checkPhoneNumber() {
 
 // Gọi hàm kiểm tra số điện thoại khi trang được tải
 checkPhoneNumber();
+
+// Cập nhật thông tin về pin
+function updateBatteryStatus() {
+    document.getElementById('battery-info').textContent = Math.round(battery.level * 100) + '%';
+}
