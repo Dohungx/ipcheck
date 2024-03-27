@@ -46,3 +46,23 @@ window.addEventListener('load', function() {
         document.getElementById('battery-info').textContent = "Không hỗ trợ";
     }
 });
+
+// Tạo một phần tử div có id "ad-test"
+var adTest = document.createElement('div');
+adTest.innerHTML = '&nbsp;';
+adTest.className = 'ad';
+adTest.style.position = 'absolute';
+adTest.style.top = '-100px';
+document.body.appendChild(adTest);
+
+// Kiểm tra kích thước của phần tử div sau một khoảng thời gian ngắn
+setTimeout(function() {
+    // Nếu chiều cao của phần tử vẫn là 0, có thể bị chặn bởi trình chặn quảng cáo
+    if (adTest.offsetHeight === 0) {
+        document.getElementById('adblock-check').innerText = 'Có';
+    } else {
+        document.getElementById('adblock-check').innerText = 'Không';
+    }
+    // Loại bỏ phần tử div đã tạo khỏi trang
+    adTest.remove();
+}, 100);
