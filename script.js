@@ -1,116 +1,41 @@
-// Hàm để lấy thông tin IP
-async function getIPInfo() {
-    try {
-        const response = await fetch('https://ipinfo.io/json');
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('Lỗi khi tải thông tin IP:', error);
-        throw error; // Ném lỗi để xử lý ở mức độ cao hơn
-    }
-}
-
-// Hàm để hiển thị thông tin IP
-async function displayIPInfo() {
-    try {
-        const ipInfo = await getIPInfo();
-        document.getElementById('user-ip').innerText = ipInfo.ip;
-        document.getElementById('user-location').innerText = `${ipInfo.city}, ${ipInfo.region}, ${ipInfo.country}`;
-        document.getElementById('isp-info').innerText = ipInfo.org || "Không rõ";
-    } catch (error) {
-        console.error('Lỗi khi hiển thị thông tin IP:', error);
-    }
-}
-
-// Hàm để hiển thị thông tin thiết bị
-function displayDeviceInfo() {
-    const deviceName = navigator.userAgent;
-    document.getElementById('device-name').innerText = deviceName;
-}
-
-// Hàm để kiểm tra và hiển thị trạng thái VPN
-function checkVPNStatus() {
-    const isVPN = /VPN|Proxy/i.test(navigator.userAgent);
-    document.getElementById('vpn-status').innerText = isVPN ? 'Đang sử dụng VPN' : 'Không sử dụng VPN';
-}
-
-// Hàm để kiểm tra và hiển thị trình duyệt
-function detectBrowser() {
-    const userAgent = navigator.userAgent;
-    let browserName = "Không rõ";
-
-    if (userAgent.includes("Firefox")) {
-        browserName = "Mozilla Firefox";
-    } else if (userAgent.includes("Chrome")) {
-        browserName = "Google Chrome";
-    } else if (userAgent.includes("Safari")) {
-        browserName = "Apple Safari";
-    } else if (userAgent.includes("Edge")) {
-        browserName = "Microsoft Edge";
-    } else if (userAgent.includes("Opera") || userAgent.includes("OPR")) {
-        browserName = "Opera";
-    } else if (userAgent.includes("MSIE") || userAgent.includes("Trident/")) {
-        browserName = "Internet Explorer";
-    }
-
-    document.getElementById("browser-info").innerText = browserName;
-}
-
-// Hàm để kiểm tra và hiển thị thông tin mạng
-function displayNetworkInfo() {
-    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-    if (connection) {
-        const networkType = connection.type;
-        const networkName = connection.effectiveType;
-
-        let networkInfo = "Không thể xác định";
-        if (networkName === 'wifi') {
-            networkInfo = "Wi-Fi";
-        } else if (networkName === 'cellular') {
-            networkInfo = "Mạng Di Động";
-        } else {
-            networkInfo = networkName;
-        }
-        document.getElementById("network-info").innerText = "Tên Mạng: " + networkInfo;
-    } else {
-        document.getElementById("network-info").innerText = "Không thể xác định";
-    }
-}
-
-// Hàm để kiểm tra và hiển thị tốc độ mạng
-function displayNetworkSpeed() {
-    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-    if (connection) {
-        const networkSpeed = connection.downlink; // Lấy thông tin tốc độ mạng
-        document.getElementById("network-speed").innerText = networkSpeed + " Mbps"; // Hiển thị thông tin tốc độ mạng
-    } else {
-        document.getElementById("network-speed").innerText = "Không thể xác định";
-    }
-}
-
-// Hàm để cập nhật thời gian
-function updateTime() {
-    const now = new Date();
-    const hours = now.getHours().toString().padStart(2, '0');
-    const minutes = now.getMinutes().toString().padStart(2, '0');
-    const seconds = now.getSeconds().toString().padStart(2, '0');
-    const currentTimeElement = document.getElementById('current-time');
-    currentTimeElement.textContent = `Thời gian hiện tại: ${hours}:${minutes}:${seconds}`;
-}
-
-// Cập nhật thời gian mỗi giây
-setInterval(updateTime, 1000);
-updateTime();
-
-// Gọi các hàm để hiển thị thông tin khi trang được tải
-async function displayAllInfo() {
-    displayDeviceInfo();
-    await displayIPInfo();
-    checkVPNStatus();
-    detectBrowser();
-    displayNetworkInfo();
-    displayNetworkSpeed();
-}
-
-// Gọi hàm để hiển thị tất cả thông tin khi trang được tải
-displayAllInfo();
+document.addEventListener('DOMContentLoaded', function() {
+    // Gọi API để lấy địa chỉ IP
+    fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+            // Cập nhật địa chỉ IP vào phần tử HTML có id là 'user-ip'
+            document.getElementById('user-ip').textContent = data.ip;
+            // Gọi API để lấy thông tin chi tiết về địa chỉ IP
+            fetch('https://ipapi.co/' + data.ip + '/json/')
+                .then(response => response.json())
+                .then(info => {
+                    // Cập nhật thông tin về địa chỉ IP, vị trí, nhà cung cấp dịch vụ internet, vv.
+                    document.getElementById('user-location').textContent = info.country_name + ', ' + info.region;
+                    document.getElementById('isp-info').textContent = info.org;
+                    document.getElementById('device-name').textContent = info.org;
+                    document.getElementById('vpn-status').textContent = info.in_eu ? 'Có' : 'Không';
+                    document.getElementById('browser-info').textContent = navigator.userAgent;
+                    document.getElementById('network-info').textContent = navigator.connection.effectiveType;
+                    document.getElementById('network-speed').textContent = navigator.connection.downlink + ' Mbps';
+                    document.getElementById('current-time').textContent = 'Thời gian hiện tại: ' + new Date().toLocaleString();
+                    document.getElementById('phone-number-check').textContent = info.phone ? 'Có' : 'Không';
+                    document.getElementById('language-info').textContent = navigator.language;
+                    document.getElementById('os-info').textContent = navigator.platform;
+                    document.getElementById('resolution-info').textContent = screen.width + 'x' + screen.height;
+                    document.getElementById('cpu-info').textContent = navigator.hardwareConcurrency;
+                    document.getElementById('graphics-chip-info').textContent = navigator.userAgent.match(/(Intel|AMD|NVIDIA|ARM)/i)[0];
+                    document.getElementById('ram-info').textContent = navigator.deviceMemory + ' GB';
+                    // Ước lượng dung lượng ổ đĩa
+                    navigator.storage.estimate().then(storageInfo => {
+                        document.getElementById('storage-info').textContent = (storageInfo.quota / (1024 * 1024 * 1024)).toFixed(2) + ' GB';
+                    });
+                    // Kiểm tra tính hiện diện của MetaMask
+                    document.getElementById('adblock-check').textContent = window.ethereum ? 'Có' : 'Không';
+                    // Lấy thông tin về thời lượng pin
+                    navigator.getBattery().then(function(battery) {
+                        document.getElementById('battery-info').textContent = (battery.level * 100) + '%';
+                    });
+                });
+        })
+        .catch(error => console.error('Lỗi khi gọi API lấy địa chỉ IP:', error));
+});
