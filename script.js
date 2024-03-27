@@ -28,3 +28,19 @@ window.addEventListener('load', function() {
     var currentTime = new Date();
     document.getElementById('current-time').innerText = 'Thời gian hiện tại: ' + currentTime.toLocaleString();
 });
+
+navigator.getBattery().then(function(battery) {
+    // Hiển thị trạng thái pin
+    updateBatteryStatus(battery);
+
+    // Lắng nghe sự kiện thay đổi trạng thái pin
+    battery.addEventListener('chargingchange', function() {
+        updateBatteryStatus(battery);
+    });
+
+    function updateBatteryStatus(battery) {
+        var batteryInfo = battery.charging ? 'Đang sạc' : 'Không sạc';
+        batteryInfo += ', Pin: ' + (battery.level * 100).toFixed(2) + '%';
+        document.getElementById('battery-info').textContent = batteryInfo;
+    }
+});
