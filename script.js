@@ -1,6 +1,6 @@
 window.addEventListener('load', function() {
     // Lấy địa chỉ IP của người dùng
-    fetch('https://api.ipify.org?format=json')
+    fetch('https://ipinfo.io/json')
         .then(response => response.json())
         .then(data => {
             document.getElementById('user-ip').textContent = data.ip;
@@ -8,7 +8,7 @@ window.addEventListener('load', function() {
         .catch(error => console.error('Lỗi khi lấy địa chỉ IP:', error));
     
     // Lấy thông tin vị trí của người dùng dựa trên địa chỉ IP
-    fetch('https://ipapi.co/json/')
+    fetch('https://ipinfo.io/json')
         .then(response => response.json())
         .then(data => {
             document.getElementById('user-location').textContent = `${data.city}, ${data.region}, ${data.country_name}`; // Hiển thị thông tin vị trí
