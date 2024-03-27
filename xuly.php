@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message = $_POST['message'];
 
     // Địa chỉ email của bạn
-    $to = "your_email@example.com";
+    $to = "dohungx307209@gmail.com";
 
     // Chủ đề email
     $subject = "Tin nhắn từ biểu mẫu liên hệ";
