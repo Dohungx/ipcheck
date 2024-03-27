@@ -12,7 +12,7 @@ window.addEventListener('load', function() {
         .then(response => response.json())
         .then(data => {
             document.getElementById('user-location').textContent = `${data.city}, ${data.region}, ${data.country_name}`;
-            document.getElementById('isp-info').textContent = data.org;
+            document.getElementById('isp-info').textContent = data.org; // Hiển thị thông tin ISP
             document.getElementById('device-name').textContent = navigator.platform;
             document.getElementById('browser-info').textContent = navigator.userAgent;
             document.getElementById('language-info').textContent = navigator.language;
@@ -45,24 +45,29 @@ window.addEventListener('load', function() {
     } else {
         document.getElementById('battery-info').textContent = "Không hỗ trợ";
     }
-});
 
-// Tạo một phần tử div có id "ad-test"
-var adTest = document.createElement('div');
-adTest.innerHTML = '&nbsp;';
-adTest.className = 'ad';
-adTest.style.position = 'absolute';
-adTest.style.top = '-100px';
-document.body.appendChild(adTest);
-
-// Kiểm tra kích thước của phần tử div sau một khoảng thời gian ngắn
-setTimeout(function() {
-    // Nếu chiều cao của phần tử vẫn là 0, có thể bị chặn bởi trình chặn quảng cáo
-    if (adTest.offsetHeight === 0) {
-        document.getElementById('adblock-check').innerText = 'Có';
+    // Kiểm tra sự hỗ trợ của API Network Information và hiển thị loại kết nối mạng
+    if ('connection' in navigator) {
+        var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        var connectionType = connection.effectiveType;
+        document.getElementById('network-info').textContent = connectionType;
     } else {
-        document.getElementById('adblock-check').innerText = 'Không';
+        document.getElementById('network-info').textContent = "Không hỗ trợ";
     }
-    // Loại bỏ phần tử div đã tạo khỏi trang
-    adTest.remove();
-}, 100);
+
+    // Kiểm tra trình chặn quảng cáo và hiển thị kết quả
+    var adTest = document.createElement('div');
+    adTest.innerHTML = '&nbsp;';
+    adTest.className = 'ad';
+    adTest.style.position = 'absolute';
+    adTest.style.top = '-100px';
+    document.body.appendChild(adTest);
+    setTimeout(function() {
+        if (adTest.offsetHeight === 0) {
+            document.getElementById('adblock-check').textContent = 'Có';
+        } else {
+            document.getElementById('adblock-check').textContent = 'Không';
+        }
+        adTest.remove();
+    }, 100);
+});
