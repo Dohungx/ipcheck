@@ -11,7 +11,7 @@ window.addEventListener('load', function() {
     fetch('https://ipapi.co/json/')
         .then(response => response.json())
         .then(data => {
-            document.getElementById('user-location').textContent = `${data.city}, ${data.region}, ${data.country_name}`;
+            document.getElementById('user-location').textContent = `${data.city}, ${data.region}, ${data.country_name}`; // Hiển thị thông tin vị trí
             document.getElementById('isp-info').textContent = data.org; // Hiển thị thông tin ISP
             document.getElementById('device-name').textContent = navigator.platform;
             document.getElementById('browser-info').textContent = navigator.userAgent;
