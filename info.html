@@ -4,39 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thông tin của tôi</title>
-    <link rel="website icon" type="png" href="logovit.png">
+    <link rel="website icon" type="png" href="logovit.png"
     <link rel="stylesheet" href="style.css">
-    <script>
-        function sendEmail() {
-            var email = document.getElementById('email').value;
-            var message = document.getElementById('message').value;
-            var subject = "Liên hệ";
-            var mailtoLink = "mailto:dohungx307209@gmail.com" + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(message);
-            window.location.href = mailtoLink;
-        }
-    </script>
 </head>
 <body>
     <img src="logovit.png" alt="logo zui ze" width="70">
     <div>
         <h2>Liên hệ</h2>
-        <form onsubmit="sendEmail(); return false;">
+        <form id="contactForm">
             <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email"><br>
+            <input type="email" id="email" name="email" required><br>
             <label for="message">Tin nhắn:</label><br>
-            <textarea id="message" name="message" rows="4" cols="50"></textarea><br>
-            <input type="submit" value="Gửi">
+            <textarea id="message" name="message" rows="4" cols="50" required></textarea><br>
+            <input type="button" value="Gửi qua Gmail" onclick="sendEmail('gmail')">
+            <input type="button" value="Gửi qua Email mặc định" onclick="sendEmail('default')">
         </form>
     </div>
 
-    <div>
-        <h2>Mạng xã hội</h2>
-        <ul>
-            <li><a href="https://www.instagram.com/dhungx09">Instagram</a></li>
-            <li><a href="https://www.facebook.com/profile.php?id=100078801188040&mibextid=LQQJ4d">Facebook</a></li>
-            <li><a href="https://t.me/Dhungx">Telegram</a></li>
-            <li><a href="https://github.com/Dohungx">GitHub</a></li>
-        </ul>
-    </div>
+    <script>
+        function sendEmail(app) {
+            var email = document.getElementById('email').value;
+            var message = document.getElementById('message').value;
+            var subject = "Liên hệ";
+            var body = encodeURIComponent(message);
+
+            if (app === 'gmail') {
+                var url = "https://mail.google.com/mail/?view=cm&to=" + email + "&su=" + encodeURIComponent(subject) + "&body=" + body;
+                window.open(url);
+            } else if (app === 'default') {
+                var mailtoLink = "mailto:" + email + "?subject=" + encodeURIComponent(subject) + "&body=" + body;
+                window.location.href = mailtoLink;
+            }
+        }
+    </script>
 </body>
 </html>
