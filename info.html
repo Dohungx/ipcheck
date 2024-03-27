@@ -4,18 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thông tin của tôi</title>
+    <link rel="website icon" type="png" href="logovit.png">
+    <link rel="stylesheet" href="style.css">
     <script>
-        function openGmailCompose() {
-            window.location.href = 'https://mail.google.com/mail/?view=cm&fs=1&to=dohungx307209@gmail.com';
+        function sendEmail() {
+            var email = document.getElementById('email').value;
+            var message = document.getElementById('message').value;
+            var subject = "Liên hệ";
+            var mailtoLink = "mailto:dohungx307209@gmail.com" + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(message);
+            window.location.href = mailtoLink;
         }
     </script>
 </head>
 <body>
+    <img src="logovit.png" alt="logo zui ze" width="70">
     <div>
         <h2>Liên hệ</h2>
-        <ul>
-            <li><a href="javascript:void(0);" onclick="openGmailCompose()">Gửi email cho tôi qua Gmail</a></li>
-        </ul>
+        <form onsubmit="sendEmail(); return false;">
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email"><br>
+            <label for="message">Tin nhắn:</label><br>
+            <textarea id="message" name="message" rows="4" cols="50"></textarea><br>
+            <input type="submit" value="Gửi">
+        </form>
     </div>
 
     <div>
