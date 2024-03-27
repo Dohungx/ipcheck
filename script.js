@@ -3,44 +3,46 @@ window.addEventListener('load', function() {
     fetch('https://api.ipify.org?format=json')
         .then(response => response.json())
         .then(data => {
-            document.getElementById('user-ip').innerText = data.ip;
+            document.getElementById('user-ip').textContent = data.ip;
         })
-        .catch(error => console.error('Error fetching IP address:', error));
+        .catch(error => console.error('Lỗi khi lấy địa chỉ IP:', error));
     
     // Lấy thông tin vị trí của người dùng dựa trên địa chỉ IP
     fetch('https://ipapi.co/json/')
         .then(response => response.json())
         .then(data => {
-            document.getElementById('user-location').innerText = `${data.city}, ${data.region}, ${data.country_name}`;
-            document.getElementById('isp-info').innerText = data.org;
-            document.getElementById('device-name').innerText = navigator.platform;
-            document.getElementById('browser-info').innerText = navigator.userAgent;
-            document.getElementById('language-info').innerText = navigator.language;
-            document.getElementById('os-info').innerText = `${navigator.platform}, ${navigator.userAgent}`;
-            document.getElementById('resolution-info').innerText = `${screen.width}x${screen.height}`;
-            document.getElementById('cpu-info').innerText = navigator.hardwareConcurrency ? navigator.hardwareConcurrency : "N/A";
-            document.getElementById('battery-info').innerText = navigator.getBattery ? "Supported" : "Not Supported";
-            document.getElementById('vpn-status').innerText = data.is_proxy ? "Đang sử dụng VPN" : "Không sử dụng VPN";
+            document.getElementById('user-location').textContent = `${data.city}, ${data.region}, ${data.country_name}`;
+            document.getElementById('isp-info').textContent = data.org;
+            document.getElementById('device-name').textContent = navigator.platform;
+            document.getElementById('browser-info').textContent = navigator.userAgent;
+            document.getElementById('language-info').textContent = navigator.language;
+            document.getElementById('os-info').textContent = navigator.platform;
+            document.getElementById('resolution-info').textContent = `${screen.width}x${screen.height}`;
+            document.getElementById('cpu-info').textContent = navigator.hardwareConcurrency ? navigator.hardwareConcurrency : "N/A";
+            document.getElementById('vpn-status').textContent = data.is_proxy ? "Đang sử dụng VPN" : "Không sử dụng VPN";
         })
-        .catch(error => console.error('Error fetching user location:', error));
+        .catch(error => console.error('Lỗi khi lấy thông tin vị trí của người dùng:', error));
 
     // Hiển thị thời gian hiện tại
     var currentTime = new Date();
-    document.getElementById('current-time').innerText = 'Thời gian hiện tại: ' + currentTime.toLocaleString();
-});
+    document.getElementById('current-time').textContent = 'Thời gian hiện tại: ' + currentTime.toLocaleString();
 
-navigator.getBattery().then(function(battery) {
-    // Hiển thị trạng thái pin
-    updateBatteryStatus(battery);
+    // Kiểm tra hỗ trợ Battery Status API và hiển thị thông tin về pin
+    if (navigator.getBattery) {
+        navigator.getBattery().then(function(battery) {
+            // Hiển thị trạng thái pin và lắng nghe sự kiện thay đổi
+            updateBatteryStatus(battery);
+            battery.addEventListener('chargingchange', function() {
+                updateBatteryStatus(battery);
+            });
 
-    // Lắng nghe sự kiện thay đổi trạng thái pin
-    battery.addEventListener('chargingchange', function() {
-        updateBatteryStatus(battery);
-    });
-
-    function updateBatteryStatus(battery) {
-        var batteryInfo = battery.charging ? 'Đang sạc' : 'Không sạc';
-        batteryInfo += ', Pin: ' + (battery.level * 100).toFixed(2) + '%';
-        document.getElementById('battery-info').textContent = batteryInfo;
+            function updateBatteryStatus(battery) {
+                var batteryInfo = battery.charging ? 'Đang sạc' : 'Không sạc';
+                batteryInfo += ', Pin: ' + (battery.level * 100).toFixed(2) + '%';
+                document.getElementById('battery-info').textContent = batteryInfo;
+            }
+        });
+    } else {
+        document.getElementById('battery-info').textContent = "Không hỗ trợ";
     }
 });
