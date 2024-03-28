@@ -26,6 +26,11 @@ window.addEventListener('load', function() {
     // Hiển thị thời gian hiện tại
     var currentTime = new Date();
     document.getElementById('current-time').textContent = 'Thời gian hiện tại: ' + currentTime.toLocaleString();
+// Cập nhật thời gian liên tục
+setInterval(function() {
+    var currentTime = new Date();
+    document.getElementById('current-time').textContent = 'Thời gian hiện tại: ' + currentTime.toLocaleString();
+}, 1000); // Cập nhật mỗi 1 giây (1000 milliseconds)
 
     // Kiểm tra hỗ trợ Battery Status API và hiển thị thông tin về pin
     if (navigator.getBattery) {
