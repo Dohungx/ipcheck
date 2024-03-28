@@ -3,13 +3,12 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #000000;
+    background-color: #000;
 }
 
 /* Phần header */
 details {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 20px 0;
     padding: 20px;
     background-color: #87CEED;
     border-radius: 5px;
@@ -25,7 +24,7 @@ summary {
 }
 
 a {
-    color: #000000; /* Màu cam đậm */
+    color: #000; /* Màu đen */
     text-decoration: none;
 }
 
@@ -37,20 +36,20 @@ a:hover {
 .container {
     max-width: 800px;
     margin: 20px auto;
-    background-color: #ffffff; /* Màu trắng */
+    background-color: #fff;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-    color: #fff; 
+h1, .end {
+    color: #fff;
     margin-bottom: 20px;
     padding-bottom: 10px;
 }
 
 p {
-    color: black; 
+    color: #000;
     margin-bottom: 15px;
     padding-bottom: 10px;
 }
@@ -61,7 +60,7 @@ span {
 
 /* Phần footer */
 footer {
-    background-color: #333333;
+    background-color: #333;
     color: #fff;
     padding: 10px 0;
     text-align: center;
@@ -75,11 +74,7 @@ footer p {
     margin: 0;
 }
 
-.end {
-    color: #fff;
-}
-
-/* menu */
+/* Menu */
 .menu-toggle {
     display: flex;
     flex-direction: column;
@@ -94,7 +89,7 @@ footer p {
 .bar {
     width: 100%;
     height: 2px;
-    background-color: #fff; /* Màu đen */
+    background-color: #fff;
     transition: transform 0.3s ease;
 }
 
@@ -115,7 +110,7 @@ footer p {
     top: 50px;
     left: 0;
     width: 200px;
-    background-color: #ffffff; /* Màu trắng */
+    background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -133,15 +128,16 @@ footer p {
 
 .menu ul li {
     margin-bottom: 10px;
-    
+}
+
 .menu ul li a {
     text-decoration: none;
-    color: #fff; 
+    color: #000;
     font-weight: bold;
 }
 
 .menu ul li a:hover {
-    color: #fff; 
+    color: #000;
 }
 
 .logo {
@@ -151,27 +147,27 @@ footer p {
 /* CSS cho nút Tìm kiếm IP */
 #search-button {
     padding: 10px 20px;
-    background-color: black; /* Màu cam đậm */
-    color: #fff; /* Màu chữ trắng */
+    background-color: #000;
+    color: #fff;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Hiệu ứng chuyển đổi màu nền khi hover */
+    transition: background-color 0.3s ease;
 }
 
 /* CSS cho input */
 #search-ip {
     padding: 10px;
-    border: 1px solid #ccc; /* Viền đậm màu xám */
-    border-radius: 5px; /* Bo góc */
+    border: 1px solid #ccc;
+    border-radius: 5px;
     font-size: 16px;
-    width: 200px; /* Độ rộng */
+    width: 200px;
 }
 
 /* Hover effect */
 #search-button:hover {
-    background-color: black; /* Màu cam đậm */
+    background-color: #000;
 }
 
 /* Khu vực hiển thị kết quả */
