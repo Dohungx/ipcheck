@@ -84,13 +84,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // Khởi tạo Speedtest
     const speedTest = new Speedtest();
 
-    // Xử lý sự kiện cập nhật tốc độ mạng
-    speedTest.onupdate = function(data) {
-        // Cập nhật tốc độ mạng
-        speedTestElement.textContent = 'Tải lên: ' + (data.upload / 1024 / 1024).toFixed(2) + ' Mbps, ' +
-                                       'Tải xuống: ' + (data.download / 1024 / 1024).toFixed(2) + ' Mbps';
-    };
+    // Hàm cập nhật tốc độ mạng
+    function updateSpeed() {
+        speedTest.onupdate = function(data) {
+            // Cập nhật tốc độ mạng
+            speedTestElement.textContent = 'Tải lên: ' + (data.upload / 1024 / 1024).toFixed(2) + ' Mbps, ' +
+                                            'Tải xuống: ' + (data.download / 1024 / 1024).toFixed(2) + ' Mbps';
+        };
+        speedTest.start();
+    }
 
-    // Bắt đầu Speedtest
-    speedTest.start();
+    // Cập nhật tốc độ mạng ban đầu
+    updateSpeed();
+
+    // Cập nhật tốc độ mạng sau mỗi 5 giây
+    setInterval(updateSpeed, 1000); // Cập nhật mỗi 1 giây
 });
