@@ -97,6 +97,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Cập nhật tốc độ mạng ban đầu
     updateSpeed();
 
-    // Cập nhật tốc độ mạng sau mỗi 5 giây
-    setInterval(updateSpeed, 1000); // Cập nhật mỗi 1 giây
+    // Cập nhật tốc độ mạng sau mỗi 2 giây
+    setInterval(updateSpeed, 2000); // Cập nhật mỗi 2 giây
 });
