@@ -76,3 +76,21 @@ setInterval(function() {
         adTest.remove();
     }, 100);
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Tìm các phần tử HTML cần được cập nhật
+    const speedTestElement = document.getElementById('speed-test');
+
+    // Khởi tạo Speedtest
+    const speedTest = new Speedtest();
+
+    // Xử lý sự kiện cập nhật tốc độ mạng
+    speedTest.onupdate = function(data) {
+        // Cập nhật tốc độ mạng
+        speedTestElement.textContent = 'Tải lên: ' + (data.upload / 1024 / 1024).toFixed(2) + ' Mbps, ' +
+                                       'Tải xuống: ' + (data.download / 1024 / 1024).toFixed(2) + ' Mbps';
+    };
+
+    // Bắt đầu Speedtest
+    speedTest.start();
+});
