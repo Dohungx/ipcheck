@@ -43,7 +43,7 @@ setInterval(function() {
 
             function updateBatteryStatus(battery) {
                 var batteryInfo = battery.charging ? 'Đang sạc' : 'Không sạc';
-                batteryInfo += ', Pin: ' + (battery.level * 100).toFixed(2) + '%';
+                batteryInfo += ', ' + (battery.level * 100).toFixed(2) + '%';
                 document.getElementById('battery-info').textContent = batteryInfo;
             }
         });
