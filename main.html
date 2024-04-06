@@ -1,78 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thông Báo Bảo Trì và Sửa Lỗi Bảo Mật</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: black;
-            margin: 0;
-            padding: 0;
-            text-align :center;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: 20px auto;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-        }
-
-        h2 {
-            color: #fff;
-        }
-
-        p {
-            margin-bottom: 10px;
-        }
-
-        .alert {
-            padding: 15px;
-            background-color: #f44336;
-            color: white;
-            border-radius: 5px;
-            margin-bottom: 15px;
-        }
-
-        .alert.success {
-            background-color: #4CAF50;
-        }
-
-        .alert.info {
-            background-color: #2196F3;
-        }
-
-        .alert.warning {
-            background-color: #ff9800;
-        }
-
-        .alert.error {
-            background-color: #f44336;
-        }
-    </style>
+  <!-- Thiết lập ký tự và hiển thị -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Tiêu đề trang -->
+  <title>IP CHECKER - V</title>
+  <!-- Biểu tượng trang web -->
+  <link rel="icon" type="image/png" href="ip-icon.png">
+  <!-- Nhúng các file CSS -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="chuyenhuong.css">
 </head>
 <body>
-    <div class="logo">
-        <img src="logo.png" alt="logo v" width="70">
-    </div>
-    <div class="container">
-        <div class="alert">
-            <h2>THÔNG BÁO BẢO TRÌ VÀ SỬA LỖI BẢO MẬT</h2>
-            <p>Kính gửi quý khách hàng thân mến,</p>
-            <p>Chúng tôi xin trân trọng thông báo rằng chúng tôi sẽ tiến hành một phiên bảo trì đặc biệt trên trang web của chúng tôi để sửa lỗi bảo mật cấp bách.</p>
-            <p>Việc bảo trì này sẽ bắt đầu từ 21h và dự kiến sẽ kéo dài trong khoảng một giờ.</p>
-            <p>Là một biện pháp phòng ngừa, chúng tôi đã phát hiện và đưa ra biện pháp khẩn cấp để khắc phục lỗ hổng bảo mật này ngay lập tức. Tuy nhiên, để đảm bảo an toàn và tính ổn định của hệ thống, việc bảo trì là cần thiết.</p>
-            <p>Chúng tôi xin chân thành xin lỗi về bất tiện mà điều này có thể gây ra và cảm ơn sự thông cảm và hỗ trợ của quý vị trong quá trình này. Chúng tôi cam kết cung cấp thông tin cập nhật về tiến độ bảo trì và tiến trình sửa lỗi.</p>
-            <p>Nếu quý vị có bất kỳ câu hỏi hoặc cần hỗ trợ bổ sung, vui lòng liên hệ với chúng tôi qua email hoặc số điện thoại được cung cấp dưới đây.</p>
-            <p>Xin cảm ơn quý vị đã đồng hành cùng chúng tôi trong việc đảm bảo an toàn và bảo mật cho cộng đồng của chúng tôi.</p>
-            <p>Trân trọng,</p>
-            <p>[ V ]</p>
-            <p>[ dohungx307209@gmail.com ]</p>
-        </div>
-    </div>
+  <!-- Thanh chuyển hướng -->
+  <header class="navbar">
+    <ul>
+      <!-- Liên kết đến các trang khác nhau -->
+      <li><a href="main.html">Trang Chủ</a></li>
+      <li><a href="search_ip.html">Tìm Kiếm IP</a></li>
+      <li><a href="info.html">Liên Hệ</a></li>
+    </ul>
+  </header>
+
+  <!-- Logo -->
+  <div class="logo">
+    <img src="logo.png" alt="Logo V" width="70">
+  </div>
+  
+  <div class="container">
+    <!-- Phần hiển thị thông tin -->
+    <h1 class="info-use">Thông Tin Người Dùng</h1>
+    <!-- Hiển thị địa chỉ IP -->
+    <p>Địa chỉ IP: <span id="user-ip">Đang tải...</span></p>
+    <!-- Hiển thị vị trí -->
+    <p>Vị trí: <span id="user-location">Đang tải...</span></p>
+    <!-- Hiển thị nhà cung cấp Internet -->
+    <p>Nhà Cung Cấp Internet: <span id="isp-info">Đang kiểm tra...</span></p>
+    <!-- Hiển thị tên thiết bị -->
+    <p>Tên Thiết bị: <span id="device-name">Đang tải...</span></p>
+    <!-- Hiển thị trạng thái VPN -->
+    <p>Trạng thái VPN: <span id="vpn-status">Đang kiểm tra...</span></p>
+    <!-- Hiển thị thông tin trình duyệt -->
+    <p>Trình duyệt: <span id="browser-info">Đang kiểm tra...</span></p>
+    <!-- Hiển thị thời gian hiện tại -->
+    <p id="current-time">Đang tải thời gian...</p>
+    <!-- Hiển thị ngôn ngữ -->
+    <p>Ngôn Ngữ: <span id="language-info">Đang kiểm tra...</span></p>
+    <!-- Hiển thị hệ điều hành -->
+    <p>Hệ Điều Hành: <span id="os-info">Đang kiểm tra...</span></p>
+    <!-- Hiển thị tốc độ mạng -->
+    <p>Tốc Độ Mạng: <span id="speed-test">Đang kiểm tra...</span></p>
+    <!-- Hiển thị độ phân giải màn hình -->
+    <p>Độ Phân Giải Màn Hình: <span id="resolution-info">Đang kiểm tra...</span></p>
+    <!-- Hiển thị thông tin CPU -->
+    <p>CPU: <span id="cpu-info">Đang kiểm tra...</span></p>
+    <!-- Hiển thị thông tin AdBlock -->
+    <p>AdBlock: <span id="adTest">Đang kiểm tra...</span></p>
+    <!-- Hiển thị thông tin pin -->
+    <p>Pin: <span id="battery-info">Đang kiểm tra...</span></p>
+  </div>
+  
+  <!-- Footer -->
+  <footer>
+    <!-- Bản quyền -->
+    <p class="end">© 2024 - V</p>
+  </footer>
+  
+  <!-- Script -->
+  <script src="script.js"></script>
+  <!-- Script chặn click chuột phải và phím tắt F12 -->
+  <script> 
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'F12' || e.keyCode === 123) {
+        e.preventDefault();
+      }
+    });
+  </script>
 </body>
 </html>
