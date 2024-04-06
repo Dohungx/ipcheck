@@ -1,76 +1,74 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IP CHECKER - V</title>
-    <link rel="website icon" type="png" href="ip-icon.png">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="chuyenhuong.css">
+    <title>Thông Báo Bảo Trì và Sửa Lỗi Bảo Mật</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h2 {
+            color: #d50000;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        .alert {
+            padding: 15px;
+            background-color: #f44336;
+            color: white;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .alert.success {
+            background-color: #4CAF50;
+        }
+
+        .alert.info {
+            background-color: #2196F3;
+        }
+
+        .alert.warning {
+            background-color: #ff9800;
+        }
+
+        .alert.error {
+            background-color: #f44336;
+        }
+    </style>
 </head>
 <body>
-
-    <!-- Thanh chuyển hướng -->
-    <header class="navbar">
-        <ul>
-            <li><a href="main.html">Trang Chủ</a></li>
-            <li><a href="search_ip.html">Tìm Kiếm IP</a></li>
-            <li><a href="info.html">Liên Hệ</a></li>
-        </ul>
-    </header>
-  
-    <div class="logo">
-        <img src="logo.png" alt="Logo V" width="70">
-    </div>
-
     <div class="container">
-        <!-- Phần hiển thị thông tin -->
-        <h1 class="info-use">Thông Tin Người Dùng</h1>
-        
-        <p>Địa chỉ IP: <span id="user-ip">Đang tải...</span></p>
-        
-        <p>Vị trí: <span id="user-location">Đang tải...</span></p>
-        
-        <p>Nhà Cung Cấp Internet: <span id="isp-info">Đang kiểm tra...</span></p>
-        
-        <p>Tên Thiết bị: <span id="device-name">Đang tải...</span></p>
-        
-        <p>Trạng thái VPN: <span id="vpn-status">Đang kiểm tra...</span></p>
-        
-        <p>Trình duyệt: <span id="browser-info">Đang kiểm tra...</span></p>
-        
-        <p id="current-time">Đang tải thời gian...</p>
-        
-        <p>Ngôn Ngữ: <span id="language-info">Đang kiểm tra...</span></p>
-        
-        <p>Hệ Điều Hành: <span id="os-info">Đang kiểm tra...</span></p>
-        
-        <p>Tốc Độ Mạng: <span id="speed-test">Đang kiểm tra...</span></p>
-        
-        <p>Độ Phân Giải Màn Hình: <span id="resolution-info">Đang kiểm tra...</span></p>
-        
-        <p>CPU: <span id="cpu-info">Đang kiểm tra...</span></p>
-  
-        <p>AdBlock: <span id="adTest">Đang kiểm tra...</span></p>
-        
-        <p>Pin: <span id="battery-info">Đang kiểm tra...</span></p>
+        <div class="alert">
+            <h2>THÔNG BÁO BẢO TRÌ VÀ SỬA LỖI BẢO MẬT</h2>
+            <p>Kính gửi quý khách hàng thân mến,</p>
+            <p>Chúng tôi xin trân trọng thông báo rằng chúng tôi sẽ tiến hành một phiên bảo trì đặc biệt trên trang web của chúng tôi để sửa lỗi bảo mật cấp bách.</p>
+            <p>Việc bảo trì này sẽ bắt đầu từ 10h (giờ địa phương của bạn) và dự kiến sẽ kéo dài trong khoảng một giờ.</p>
+            <p>Là một biện pháp phòng ngừa, chúng tôi đã phát hiện và đưa ra biện pháp khẩn cấp để khắc phục lỗ hổng bảo mật này ngay lập tức. Tuy nhiên, để đảm bảo an toàn và tính ổn định của hệ thống, việc bảo trì là cần thiết.</p>
+            <p>Chúng tôi xin chân thành xin lỗi về bất tiện mà điều này có thể gây ra và cảm ơn sự thông cảm và hỗ trợ của quý vị trong quá trình này. Chúng tôi cam kết cung cấp thông tin cập nhật về tiến độ bảo trì và tiến trình sửa lỗi.</p>
+            <p>Nếu quý vị có bất kỳ câu hỏi hoặc cần hỗ trợ bổ sung, vui lòng liên hệ với chúng tôi qua email hoặc số điện thoại được cung cấp dưới đây.</p>
+            <p>Xin cảm ơn quý vị đã đồng hành cùng chúng tôi trong việc đảm bảo an toàn và bảo mật cho cộng đồng của chúng tôi.</p>
+            <p>Trân trọng,</p>
+            <p>[ V ]</p>
+            <p>[ dohungx307209@gmail.com ]</p>
+        </div>
     </div>
-
-    <footer>
-        <p class="end">© 2024 - V</p>
-    </footer>
-
-    <script src="script.js"></script>
-        <script> 
-    document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-    });
-
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'F12' || e.keyCode === 123) {
-            e.preventDefault();
-        }
-    });
-    </script>
 </body>
 </html>
