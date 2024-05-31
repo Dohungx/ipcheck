@@ -1,11 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Lấy địa chỉ IP và thông tin vị trí
-    fetch('https://ipinfo.io/json?token="d9205e7cc88e69"')
+    // Lấy thông tin địa chỉ IP và vị trí
+    fetch('https://ipinfo.io/json?token=d9205e7cc88e69')
         .then(response => response.json())
         .then(data => {
             document.getElementById('user-ip').textContent = data.ip;
             document.getElementById('user-location').textContent = `${data.city}, ${data.region}, ${data.country}`;
             document.getElementById('isp-info').textContent = data.org;
+        })
+        .catch(error => {
+            console.error('Error fetching IP info:', error);
         });
 
     // Lấy IP WebRTC
@@ -73,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Lấy độ phân giải màn hình
     document.getElementById('resolution-info').textContent = `${window.screen.width}x${window.screen.height}`;
 
-    // Kiểm tra CPU
+    // Kiểm tra thông tin CPU
     function estimateCPUSpeed() {
         const start = performance.now();
         for (let i = 0; i < 1e7; i++) {} // Một vòng lặp nặng nề để đo thời gian
