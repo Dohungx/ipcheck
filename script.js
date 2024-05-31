@@ -75,6 +75,13 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('adTest').textContent = adBlockEnabled ? "Đang bật" : "Không bật";
   }
   detectAdBlock();
+
+  // Lấy thông tin CPU
+  function getCPUInfo() {
+    const cpuInfo = navigator.hardwareConcurrency ? `Số luồng: ${navigator.hardwareConcurrency}` : "Không xác định";
+    document.getElementById('cpu-info').textContent = cpuInfo;
+  }
+  getCPUInfo();
 });
 
 // Phần tử giả để kiểm tra AdBlock
