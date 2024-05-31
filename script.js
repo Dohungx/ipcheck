@@ -38,10 +38,34 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('rtc').textContent = "Không thể lấy IP WebRTC";
     });
 
-    // Lấy tên thiết bị, trình duyệt, hệ điều hành
-    document.getElementById('device-name').textContent = navigator.userAgent;
-    document.getElementById('browser-info').textContent = navigator.appName;
-    document.getElementById('os-info').textContent = navigator.platform;
+    function getBrowserName() {
+    const userAgent = navigator.userAgent;
+    let browserName = "Không xác định";
+
+    if (userAgent.indexOf("Firefox") > -1) {
+        browserName = "Mozilla Firefox";
+    } else if (userAgent.indexOf("Opera") > -1 || userAgent.indexOf("OPR") > -1) {
+        browserName = "Opera";
+    } else if (userAgent.indexOf("Trident") > -1) {
+        browserName = "Microsoft Internet Explorer";
+    } else if (userAgent.indexOf("Edge") > -1) {
+        browserName = "Microsoft Edge";
+    } else if (userAgent.indexOf("Chrome") > -1) {
+        browserName = "Google Chrome";
+    } else if (userAgent.indexOf("Safari") > -1) {
+        browserName = "Apple Safari";
+    }
+
+    return browserName;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Các chức năng khác
+
+    // Hiển thị tên trình duyệt chính xác
+    const browserName = getBrowserName();
+    document.getElementById('browser-info').textContent = browserName;
+});
 
     // Lấy ngôn ngữ
     document.getElementById('language-info').textContent = navigator.language;
