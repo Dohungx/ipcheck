@@ -1,14 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Lấy địa chỉ IP và thông tin vị trí
-    fetch('https://api.ipify.org?format=json')
+    fetch('https://ipinfo.io/json?token="d9205e7cc88e69"')
         .then(response => response.json())
         .then(data => {
             document.getElementById('user-ip').textContent = data.ip;
-            return fetch(`https://ipapi.co/${data.ip}/json/`);
-        })
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('user-location').textContent = `${data.city}, ${data.region}, ${data.country_name}`;
+            document.getElementById('user-location').textContent = `${data.city}, ${data.region}, ${data.country}`;
             document.getElementById('isp-info').textContent = data.org;
         });
 
@@ -38,34 +34,30 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('rtc').textContent = "Không thể lấy IP WebRTC";
     });
 
+    // Lấy tên trình duyệt
     function getBrowserName() {
-    const userAgent = navigator.userAgent;
-    let browserName = "Không xác định";
+        const userAgent = navigator.userAgent;
+        let browserName = "Không xác định";
 
-    if (userAgent.indexOf("Firefox") > -1) {
-        browserName = "Mozilla Firefox";
-    } else if (userAgent.indexOf("Opera") > -1 || userAgent.indexOf("OPR") > -1) {
-        browserName = "Opera";
-    } else if (userAgent.indexOf("Trident") > -1) {
-        browserName = "Microsoft Internet Explorer";
-    } else if (userAgent.indexOf("Edge") > -1) {
-        browserName = "Microsoft Edge";
-    } else if (userAgent.indexOf("Chrome") > -1) {
-        browserName = "Google Chrome";
-    } else if (userAgent.indexOf("Safari") > -1) {
-        browserName = "Apple Safari";
+        if (userAgent.indexOf("Firefox") > -1) {
+            browserName = "Mozilla Firefox";
+        } else if (userAgent.indexOf("Opera") > -1 || userAgent.indexOf("OPR") > -1) {
+            browserName = "Opera";
+        } else if (userAgent.indexOf("Trident") > -1) {
+            browserName = "Microsoft Internet Explorer";
+        } else if (userAgent.indexOf("Edge") > -1) {
+            browserName = "Microsoft Edge";
+        } else if (userAgent.indexOf("Chrome") > -1) {
+            browserName = "Google Chrome";
+        } else if (userAgent.indexOf("Safari") > -1) {
+            browserName = "Apple Safari";
+        }
+
+        return browserName;
     }
 
-    return browserName;
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Các chức năng khác
-
-    // Hiển thị tên trình duyệt chính xác
     const browserName = getBrowserName();
     document.getElementById('browser-info').textContent = browserName;
-});
 
     // Lấy ngôn ngữ
     document.getElementById('language-info').textContent = navigator.language;
@@ -81,12 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Lấy độ phân giải màn hình
     document.getElementById('resolution-info').textContent = `${window.screen.width}x${window.screen.height}`;
 
-
-//kiểm tra CPU
-document.addEventListener('DOMContentLoaded', function() {
-    // Các chức năng khác
-
-    // Kiểm tra thông tin CPU
+    // Kiểm tra CPU
     function estimateCPUSpeed() {
         const start = performance.now();
         for (let i = 0; i < 1e7; i++) {} // Một vòng lặp nặng nề để đo thời gian
@@ -118,8 +105,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     displayCPUInfo();
-});
-
 
     // Kiểm tra AdBlock
     function detectAdBlock() {
