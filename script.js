@@ -166,3 +166,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     checkVPNStatus();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Lấy tên thiết bị
+    const deviceName = navigator.userAgent;
+    
+    // Hiển thị tên thiết bị
+    document.getElementById('device-name').textContent = deviceName;
+});
