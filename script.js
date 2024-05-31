@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const hardwareConcurrency = navigator.hardwareConcurrency;
         const cpuSpeedInfo = estimateCPUSpeed();
         
-        document.getElementById('cpu-info').textContent = `Số luồng: ${hardwareConcurrency}, Thời gian tính toán: ${cpuSpeedInfo.duration} ms, Tốc độ CPU: ${cpuSpeedInfo.speed}`;
+        document.getElementById('cpu-info').textContent = `${hardwareConcurrency}, Tính: ${cpuSpeedInfo.duration} ms, Tốc độ CPU: ${cpuSpeedInfo.speed}`;
     }
 
     // Cập nhật thông tin CPU mỗi 2 giây
