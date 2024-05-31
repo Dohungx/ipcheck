@@ -136,3 +136,11 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('battery-info').textContent = 'Không hỗ trợ';
     }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Lấy tên thiết bị
+    const deviceName = navigator.userAgent;
+    
+    // Hiển thị tên thiết bị
+    document.getElementById('device-name').textContent = deviceName;
+});
