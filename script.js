@@ -60,9 +60,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 //kiểm tra CPU
 document.addEventListener('DOMContentLoaded', function() {
+    // Các chức năng khác
 
     // Kiểm tra thông tin CPU
-    function estimateCPU() {
+    function estimateCPUSpeed() {
         const start = performance.now();
         for (let i = 0; i < 1e7; i++) {} // Một vòng lặp nặng nề để đo thời gian
         const end = performance.now();
@@ -79,10 +80,20 @@ document.addEventListener('DOMContentLoaded', function() {
             cpuSpeed = 'Chậm';
         }
 
-        document.getElementById('cpu-info').textContent = `Thời gian tính toán: ${duration.toFixed(2)} ms, Tốc độ CPU: ${cpuSpeed}`;
+        return {
+            duration: duration.toFixed(2),
+            speed: cpuSpeed
+        };
     }
 
-    estimateCPU();
+    function displayCPUInfo() {
+        const hardwareConcurrency = navigator.hardwareConcurrency;
+        const cpuSpeedInfo = estimateCPUSpeed();
+        
+        document.getElementById('cpu-info').textContent = `Số luồng: ${hardwareConcurrency}, Thời gian tính toán: ${cpuSpeedInfo.duration} ms, Tốc độ CPU: ${cpuSpeedInfo.speed}`;
+    }
+
+    displayCPUInfo();
 });
 
 
