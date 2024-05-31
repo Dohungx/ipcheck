@@ -1,102 +1,84 @@
-window.addEventListener('load', function() {
-    // Lấy địa chỉ IP của người dùng
-    fetch('https://ipinfo.io/json')
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('user-ip').textContent = data.ip;
-        })
-        .catch(error => console.error('Lỗi khi lấy địa chỉ IP:', error));
-    
-    // Lấy thông tin vị trí của người dùng dựa trên địa chỉ IP
-    fetch('https://ipinfo.io/json')
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('user-location').textContent = `${data.city}, ${data.region}, ${data.country_name}`; // Hiển thị thông tin vị trí
-            document.getElementById('isp-info').textContent = data.org; // Hiển thị thông tin ISP
-            document.getElementById('device-name').textContent = navigator.platform;
-            document.getElementById('browser-info').textContent = navigator.userAgent;
-            document.getElementById('language-info').textContent = navigator.language;
-            document.getElementById('os-info').textContent = navigator.platform;
-            document.getElementById('resolution-info').textContent = `${screen.width}x${screen.height}`;
-            document.getElementById('cpu-info').textContent = navigator.hardwareConcurrency ? navigator.hardwareConcurrency : "N/A";
-            document.getElementById('vpn-status').textContent = data.is_proxy ? "Đang sử dụng VPN" : "Không sử dụng VPN";
-        })
-        .catch(error => console.error('Lỗi khi lấy thông tin vị trí của người dùng:', error));
+document.addEventListener("DOMContentLoaded", function () {
+  // Lấy địa chỉ IP của người dùng
+  fetch('https://api.ipify.org?format=json')
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('user-ip').textContent = data.ip;
+    });
 
-    // Hiển thị thời gian hiện tại
-    var currentTime = new Date();
-    document.getElementById('current-time').textContent = 'Thời gian hiện tại: ' + currentTime.toLocaleString();
-// Cập nhật thời gian liên tục
-setInterval(function() {
-    var currentTime = new Date();
-    document.getElementById('current-time').textContent = 'Thời gian hiện tại: ' + currentTime.toLocaleString();
-}, 1000); // Cập nhật mỗi 1 giây (1000 milliseconds)
+  // Lấy thông tin trình duyệt và hệ điều hành
+  const userAgent = navigator.userAgent;
+  document.getElementById('browser-info').textContent = userAgent;
 
-    // Kiểm tra hỗ trợ Battery Status API và hiển thị thông tin về pin
-    if (navigator.getBattery) {
-        navigator.getBattery().then(function(battery) {
-            // Hiển thị trạng thái pin và lắng nghe sự kiện thay đổi
-            updateBatteryStatus(battery);
-            battery.addEventListener('chargingchange', function() {
-                updateBatteryStatus(battery);
-            });
+  // Lấy thông tin hệ điều hành
+  const os = navigator.platform;
+  document.getElementById('os-info').textContent = os;
 
-            function updateBatteryStatus(battery) {
-                var batteryInfo = battery.charging ? 'Đang sạc' : 'Không sạc';
-                batteryInfo += ', ' + (battery.level * 100).toFixed(2) + '%';
-                document.getElementById('battery-info').textContent = batteryInfo;
-            }
-        });
-    } else {
-        document.getElementById('battery-info').textContent = "Không hỗ trợ";
-    }
+  // Lấy độ phân giải màn hình
+  const resolution = `${window.screen.width} x ${window.screen.height}`;
+  document.getElementById('resolution-info').textContent = resolution;
 
-    // Kiểm tra sự hỗ trợ của API Network Information và hiển thị loại kết nối mạng
-    if ('connection' in navigator) {
-        var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-        var connectionType = connection.effectiveType;
-        document.getElementById('network-info').textContent = connectionType;
-    } else {
-        document.getElementById('network-info').textContent = "Không hỗ trợ";
-    }
+  // Lấy thông tin ngôn ngữ
+  const language = navigator.language;
+  document.getElementById('language-info').textContent = language;
 
-    // Kiểm tra trình chặn quảng cáo và hiển thị kết quả
-    var adTest = document.createElement('div');
-    adTest.innerHTML = '&nbsp;';
-    adTest.className = 'ad';
-    adTest.style.position = 'absolute';
-    adTest.style.top = '-100px';
-    document.body.appendChild(adTest);
-    setTimeout(function() {
-        if (adTest.offsetHeight === 0) {
-            document.getElementById('adblock-check').textContent = 'Có';
-        } else {
-            document.getElementById('adblock-check').textContent = 'Không';
-        }
-        adTest.remove();
-    }, 100);
+  // Lấy tên thiết bị (giới hạn)
+  const deviceName = navigator.userAgentData ? navigator.userAgentData.brands.map(b => b.brand).join(', ') : navigator.userAgent;
+  document.getElementById('device-name').textContent = deviceName;
+
+  // Kiểm tra trạng thái VPN (giả định, do không có cách chính xác để kiểm tra)
+  document.getElementById('vpn-status').textContent = "Không xác định";
+
+  // Kiểm tra WebRTC
+  if (window.RTCPeerConnection) {
+    const rtc = new RTCPeerConnection({ iceServers: [] });
+    rtc.createDataChannel('', { reliable: false });
+    rtc.onicecandidate = function (evt) {
+      if (evt.candidate) {
+        const rtcInfo = evt.candidate.candidate;
+        document.getElementById('rtc').textContent = rtcInfo;
+      }
+    };
+    rtc.createOffer().then(offer => rtc.setLocalDescription(offer));
+  } else {
+    document.getElementById('rtc').textContent = "Không hỗ trợ WebRTC";
+  }
+
+  // Lấy thời gian hiện tại
+  function updateTime() {
+    const now = new Date();
+    document.getElementById('current-time').textContent = now.toLocaleString();
+  }
+  setInterval(updateTime, 1000);
+
+  // Lấy thông tin nhà cung cấp Internet (ISP)
+  fetch('https://ipapi.co/json/')
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('user-location').textContent = `${data.city}, ${data.region}, ${data.country_name}`;
+      document.getElementById('isp-info').textContent = data.org;
+    });
+
+  // Lấy thông tin pin
+  if (navigator.getBattery) {
+    navigator.getBattery().then(function (battery) {
+      const level = battery.level * 100;
+      document.getElementById('battery-info').textContent = `${level}% ${battery.charging ? ' (Đang sạc)' : ''}`;
+    });
+  } else {
+    document.getElementById('battery-info').textContent = "Không hỗ trợ";
+  }
+
+  // Kiểm tra AdBlock
+  function detectAdBlock() {
+    const adBlockEnabled = !document.getElementById('ad-test').offsetHeight;
+    document.getElementById('adTest').textContent = adBlockEnabled ? "Đang bật" : "Không bật";
+  }
+  detectAdBlock();
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Tìm các phần tử HTML cần được cập nhật
-    const speedTestElement = document.getElementById('speed-test');
-
-    // Khởi tạo Speedtest
-    const speedTest = new Speedtest();
-
-    // Hàm cập nhật tốc độ mạng
-    function updateSpeed() {
-        speedTest.onupdate = function(data) {
-            // Cập nhật tốc độ mạng
-            speedTestElement.textContent = 'Tải lên: ' + (data.upload / 1024 / 1024).toFixed(2) + ' Mbps, ' +
-                                            'Tải xuống: ' + (data.download / 1024 / 1024).toFixed(2) + ' Mbps';
-        };
-        speedTest.start();
-    }
-
-    // Cập nhật tốc độ mạng ban đầu
-    updateSpeed();
-
-    // Cập nhật tốc độ mạng sau mỗi 2 giây
-    setInterval(updateSpeed, 2000); // Cập nhật mỗi 2 giây
-});
+// Phần tử giả để kiểm tra AdBlock
+const adTest = document.createElement('div');
+adTest.id = 'ad-test';
+adTest.style.display = 'none';
+document.body.appendChild(adTest);
