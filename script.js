@@ -83,9 +83,9 @@ document.addEventListener('DOMContentLoaded', function() {
         let cpuSpeed;
         if (duration < 50) {
             cpuSpeed = 'Rất nhanh';
-        } else if (duration < 100) {
+        } else if (duration < 120) {
             cpuSpeed = 'Nhanh';
-        } else if (duration < 250) {
+        } else if (duration < 300) {
             cpuSpeed = 'Trung bình';
         } else {
             cpuSpeed = 'Chậm';
@@ -101,10 +101,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const hardwareConcurrency = navigator.hardwareConcurrency;
         const cpuSpeedInfo = estimateCPUSpeed();
         
-        document.getElementById('cpu-info').textContent = ` ${hardwareConcurrency}, Tính: ${cpuSpeedInfo.duration} ms, Tốc độ CPU: ${cpuSpeedInfo.speed}`;
+        document.getElementById('cpu-info').textContent = `Số luồng: ${hardwareConcurrency}, Thời gian tính toán: ${cpuSpeedInfo.duration} ms, Tốc độ CPU: ${cpuSpeedInfo.speed}`;
     }
 
+    // Cập nhật thông tin CPU mỗi 2 giây
     displayCPUInfo();
+    setInterval(displayCPUInfo, 2000);
 
     // Kiểm tra AdBlock
     function detectAdBlock() {
@@ -155,12 +157,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const osInfo = getOSInfo();
     document.getElementById('os-info').textContent = osInfo;
-});
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Lấy tên thiết bị
-    const deviceName = navigator.userAgent;
-    
-    // Hiển thị tên thiết bị
-    document.getElementById('device-name').textContent = deviceName;
+    // Kiểm tra trạng thái VPN
+    function checkVPNStatus() {
+        // Đây chỉ là kiểm tra đơn giản, một số trình duyệt và tiện ích mở rộng VPN có thể không phát hiện được
+        const vpnDetect = navigator.connection.type === 'vpn' ? 'Bật' : 'Chưa bật';
+        document.getElementById('vpn-status').textContent = vpnDetect;
+    }
+    checkVPNStatus();
 });
