@@ -157,6 +157,9 @@ document.addEventListener('DOMContentLoaded', async function() {
       console.error('Error fetching battery info:', error);
     }
   }
+  
+  getCPUInfo();
+  getNetworkSpeed();
 
   // Gọi các hàm khi trang đã tải
   getIPInfo();
@@ -170,6 +173,8 @@ document.addEventListener('DOMContentLoaded', async function() {
   getScreenResolution();
   checkAdBlock();
   getBatteryInfo();
+  getCPUInfo();
+  getNetworkSpeed();
 
   // Cập nhật thời gian mỗi giây
   setInterval(displayCurrentTime, 1000);
