@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Lấy địa chỉ IP của người dùng
-  fetch('https://api.ipify.org?format=json')
+  fetch('https://ipinfo.io?format=json')
     .then(response => response.json())
     .then(data => {
       document.getElementById('user-ip').textContent = data.ip;
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   setInterval(updateTime, 1000);
 
-  // Lấy thông tin nhà cung cấp Internet (ISP)
+  // Lấy thông tin nhà cung cấp Internet và vị trí (ISP)
   fetch('https://ipapi.co/json/')
     .then(response => response.json())
     .then(data => {
