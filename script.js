@@ -1,14 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Lấy thông tin địa chỉ IP và vị trí
+    // Lấy địa chỉ IP và thông tin vị trí
     fetch('https://ipinfo.io/json?token=d9205e7cc88e69')
         .then(response => response.json())
         .then(data => {
             document.getElementById('user-ip').textContent = data.ip;
             document.getElementById('user-location').textContent = `${data.city}, ${data.region}, ${data.country}`;
             document.getElementById('isp-info').textContent = data.org;
-        })
-        .catch(error => {
-            console.error('Error fetching IP info:', error);
         });
 
     // Lấy IP WebRTC
@@ -86,9 +83,9 @@ document.addEventListener('DOMContentLoaded', function() {
         let cpuSpeed;
         if (duration < 50) {
             cpuSpeed = 'Rất nhanh';
-        } else if (duration < 130) {
+        } else if (duration < 100) {
             cpuSpeed = 'Nhanh';
-        } else if (duration < 300) {
+        } else if (duration < 250) {
             cpuSpeed = 'Trung bình';
         } else {
             cpuSpeed = 'Chậm';
@@ -135,6 +132,29 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         document.getElementById('battery-info').textContent = 'Không hỗ trợ';
     }
+
+    // Lấy thông tin hệ điều hành
+    function getOSInfo() {
+        const userAgent = navigator.userAgent;
+        let osInfo = "Không xác định";
+
+        if (userAgent.indexOf("Win") > -1) {
+            osInfo = "Windows";
+        } else if (userAgent.indexOf("Mac") > -1) {
+            osInfo = "MacOS";
+        } else if (userAgent.indexOf("Linux") > -1) {
+            osInfo = "Linux";
+        } else if (userAgent.indexOf("Android") > -1) {
+            osInfo = "Android";
+        } else if (userAgent.indexOf("like Mac") > -1) {
+            osInfo = "iOS";
+        }
+
+        return osInfo;
+    }
+
+    const osInfo = getOSInfo();
+    document.getElementById('os-info').textContent = osInfo;
 });
 
 document.addEventListener('DOMContentLoaded', function() {
