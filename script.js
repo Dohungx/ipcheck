@@ -84,11 +84,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const duration = end - start;
 
         let cpuSpeed;
-        if (duration < 100) {
+        if (duration < 50) {
             cpuSpeed = 'Rất nhanh';
-        } else if (duration < 200) {
+        } else if (duration < 130) {
             cpuSpeed = 'Nhanh';
-        } else if (duration < 500) {
+        } else if (duration < 300) {
             cpuSpeed = 'Trung bình';
         } else {
             cpuSpeed = 'Chậm';
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const hardwareConcurrency = navigator.hardwareConcurrency;
         const cpuSpeedInfo = estimateCPUSpeed();
         
-        document.getElementById('cpu-info').textContent = `Số luồng: ${hardwareConcurrency}, Thời gian tính toán: ${cpuSpeedInfo.duration} ms, Tốc độ CPU: ${cpuSpeedInfo.speed}`;
+        document.getElementById('cpu-info').textContent = ` ${hardwareConcurrency}, Tính: ${cpuSpeedInfo.duration} ms, Tốc độ CPU: ${cpuSpeedInfo.speed}`;
     }
 
     displayCPUInfo();
