@@ -81,11 +81,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const duration = end - start;
 
         let cpuSpeed;
-        if (duration < 50) {
+        if (duration < 30) {
             cpuSpeed = 'Rất nhanh';
-        } else if (duration < 120) {
+        } else if (duration < 52) {
             cpuSpeed = 'Nhanh';
-        } else if (duration < 300) {
+        } else if (duration < 120) {
             cpuSpeed = 'Trung bình';
         } else {
             cpuSpeed = 'Chậm';
@@ -101,7 +101,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const hardwareConcurrency = navigator.hardwareConcurrency;
         const cpuSpeedInfo = estimateCPUSpeed();
         
-        document.getElementById('cpu-info').textContent = `${hardwareConcurrency}, Tính: ${cpuSpeedInfo.duration} ms, Tốc độ CPU: ${cpuSpeedInfo.speed}`;
+        document.getElementById('cpu-info').textContent = `${hardwareConcurrency}, Tính
+        : ${cpuSpeedInfo.duration} ms, Tốc độ CPU: ${cpuSpeedInfo.speed}`;
     }
 
     // Cập nhật thông tin CPU mỗi 2 giây
