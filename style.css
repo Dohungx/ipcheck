@@ -63,7 +63,7 @@ span {
 footer {
     background-color: #333;
     color: #fff;
-    padding: 10px 0;
+    padding: 5px 0;
     text-align: center;
     position: fixed;
     width: 100%;
@@ -266,5 +266,3 @@ footer {
 }
 
 .info-use {
-    color: black;
-}
