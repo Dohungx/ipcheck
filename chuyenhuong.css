@@ -1,13 +1,18 @@
+.navbar {
+  display: flex;
+  justify-content: center; /* Căn giữa các mục menu theo chiều ngang */
+  background-color: #ffaa50; /* Màu nền */
+}
+
 .navbar ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  overflow: hidden;
-  background-color: #ffaa500; /* Màu nền */
+  display: flex;
 }
 
 .navbar li {
-  float: left;
+  margin: 0 10px; /* Khoảng cách giữa các mục menu */
 }
 
 .navbar li a {
@@ -16,6 +21,7 @@
   text-align: center;
   text-decoration: none;
   transition: background-color 0.3s ease; /* Thêm hiệu ứng mượt khi chuyển đổi màu nền */
+  padding: 14px 16px; /* Thêm padding để các mục menu có khoảng cách hợp lý */
 }
 
 .navbar li a:hover {
