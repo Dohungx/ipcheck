@@ -1,7 +1,7 @@
 .navbar {
   display: flex;
   justify-content: center; /* Căn giữa các mục menu theo chiều ngang */
-  background-color: #ffaa50; /* Màu nền */
+  background-color: #000; /* Màu nền */
 }
 
 .navbar ul {
