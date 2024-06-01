@@ -14,7 +14,6 @@
   display: block;
   color: white; /* Màu chữ */
   text-align: center;
-  padding: 14px 16px;
   text-decoration: none;
   transition: background-color 0.3s ease; /* Thêm hiệu ứng mượt khi chuyển đổi màu nền */
 }
@@ -27,4 +26,3 @@
 .navbar li a:active {
   background-color: #ddd; /* Màu nền khi đang được click */
 }
-sửa lại css cho tất cả mọi thứ đều phải ở giữa màn hình dù là máy tính hay điện thoại
