@@ -1,35 +1,13 @@
-/* Đặt toàn bộ trang ở giữa màn hình */
-html, body {
-  height: 100%;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f0f0f0; /* Màu nền tổng thể */
-  font-family: Arial, sans-serif;
-}
-
-/* Đảm bảo container chiếm toàn bộ chiều cao */
-.container {
-  text-align: center; /* Căn giữa văn bản */
-  background-color: white;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-}
-
-/* Căn giữa navbar */
 .navbar ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  background-color: #ffaa50; /* Màu nền */
+  overflow: hidden;
+  background-color: #ffaa500; /* Màu nền */
 }
 
 .navbar li {
-  margin: 0 10px; /* Khoảng cách giữa các mục */
+  float: left;
 }
 
 .navbar li a {
@@ -49,24 +27,4 @@ html, body {
 .navbar li a:active {
   background-color: #ddd; /* Màu nền khi đang được click */
 }
-
-/* Định dạng logo */
-.logo {
-  text-align: center;
-  margin: 20px 0;
-}
-
-/* Định dạng thông tin người dùng */
-.info-use {
-  font-size: 1.5em;
-  margin-bottom: 20px;
-}
-
-.container p {
-  margin: 10px 0;
-}
-
-footer {
-  text-align: center;
-  margin-top: 20px;
-}
+sửa lại css cho tất cả mọi thứ đều phải ở giữa màn hình dù là máy tính hay điện thoại
