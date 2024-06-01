@@ -61,12 +61,11 @@ span {
 
 /* Phần footer */
 footer {
-    background-color: #333;
     color: #fff;
     padding: 5px 0;
     text-align: center;
     position: fixed;
-    width: 100%;
+    width: 50%;
     bottom: 0;
     left: 0;
         }
