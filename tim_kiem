@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search IP - V</title>
+    <link rel="website icon" type="png" href="ViBoss_Games.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+    <header class="navbar">
+        <ul>
+            <li><a href="index.html">Trang Chủ</a></li>
+            <li><a href="tim_kiem.html">Tìm Kiếm IP</a></li>
+            <li><a href="info.html">Liên Hệ</a></li>
+        </ul>
+    </header>
+        <h1>Tìm kiếm thông tin địa chỉ IP</h1>
+
+    <div class="search-container">
+        <input type="text" id="search-ip" placeholder="Nhập địa chỉ IP" autocomplete="off">
+        <button onclick="searchIP()" id="search-button">Tìm kiếm</button>
+    </div>
+
+    <div id="ip-info"></div>
+
+    <script>
+    //tim kiem ip
+    function searchIP() {
+      const ipAddress = document.getElementById('search-ip').value;
+      if (!ipAddress.trim()) {
+          alert('Vui lòng nhập địa chỉ IP.');
+          return;
+      }
+
+      fetch(`https://ipinfo.io/${ipAddress}/json`)
+          .then(response => response.json())
+          .then(data => {
+              var ipInfo = document.getElementById("ip-info");
+              ipInfo.innerHTML = "IP: " + data.ip + "<br>" +
+                                  "Quốc gia: " + data.country + "<br>" +
+                                  "Khu vực: " + data.region + "<br>" +
+                                  "Thành phố: " + data.city + "<br>" +
+                                  "Mã bưu chính: " + data.postal + "<br>" +
+                                  "Tọa độ: " + data.loc;
+          })
+          .catch(error => {
+              console.error("Đã xảy ra lỗi: " + error);
+              alert('Không thể tìm thấy thông tin cho địa chỉ IP này.');
+          });
+    }
+
+    function toggleMenu() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.menu');
+    menuToggle.classList.toggle('active');
+    menu.classList.toggle('active');
+    }
+
+    history.replaceState(null, '', '/#/tim_kiem');
+    </script>
+    <footer>
+        <p class="end">© 2024 - ViBoss</p>
+    </footer>
+</body>
+</html>

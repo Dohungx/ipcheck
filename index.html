@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cảnh Báo Từ V</title>
+    <link rel="icon" type="image/png" href="warning 3.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="logo">
+        <img src="https://github.com/Dohungx/ipcheck/blob/main/ViBoss_Games.png" alt="logo" width="70">
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <h1>CẢNH BÁO!</h1>
+            <p>Khi bạn truy cập trang web này, thông tin của bạn sẽ được thu thập.</p>
+            <button id="declineBtn">Từ Chối</button>
+            <button id="continueBtn">Tiếp tục</button>
+        </div>
+    </div>
+
+    <!-- Phần 2 (Ẩn mặc định) -->
+    <div id="part2" class="phan2" style="display: none;">
+        <header class="navbar">
+            <ul>
+                <li><a href="">Trang Chủ</a></li>
+                <li><a href="/tim_kiem">Tìm Kiếm IP</a></li>
+                <li><a href="info.html">Liên Hệ</a></li>
+            </ul>
+        </header>
+
+        <div class="container">
+            <h1 class="info-use">Thông Tin Người Dùng</h1>
+            <p>Địa chỉ IP: <span id="user-ip">Đang tải...</span></p>
+            <p>Vị trí: <span id="user-location">Đang tải...</span></p>
+            <p>Nhà Cung Cấp Internet: <span id="isp-info">Đang kiểm tra...</span></p>
+            <p>IP WebRTC: <span id="rtc">Đang kiểm tra...</span></p>
+            <p>Tên Thiết bị: <span id="device-name">Đang tải...</span></p>
+            <p>Trạng thái VPN: <span id="vpn-status">Đang kiểm tra...</span></p>
+            <p>Trình duyệt: <span id="browser-info">Đang kiểm tra...</span></p>
+            <p id="current-time">Đang tải thời gian...</p>
+            <p>Ngôn Ngữ: <span id="language-info">Đang kiểm tra...</span></p>
+            <p>Hệ Điều Hành: <span id="os-info">Đang kiểm tra...</span></p>
+            <p>Độ Phân Giải Màn Hình: <span id="resolution-info">Đang kiểm tra...</span></p>
+            <p>CPU: <span id="cpu-info">Đang kiểm tra...</span></p>
+            <p>AdBlock: <span id="adTest">Đang kiểm tra...</span></p>
+            <p>Pin: <span id="battery-info">Đang kiểm tra...</span></p>
+        </div>
+
+        <footer>
+            <p class="end">© 2025 - ViBoss Studio</p>
+        </footer>
+    </div>
+
+    <!-- Phần 3 (Ẩn mặc định) -->
+    <div id="part3" class="phan3" style="display: none;">
+        <div class="bang">
+            <h2>Thông Báo</h2>
+            <p>Bạn đã chặn truy cập.</p>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
