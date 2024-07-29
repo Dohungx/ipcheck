@@ -135,9 +135,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Lấy tên thiết bị
   document.getElementById('device-name').textContent = navigator.userAgent;
 
-    // Sử dụng history.replaceState để thay đổi URL
-    history.replaceState(null, '', '/#/trang_chu');
-
 
 });
 
